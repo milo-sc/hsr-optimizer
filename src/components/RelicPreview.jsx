@@ -15,6 +15,7 @@ const RelicPreview = ({
   setSelectedRelic = () => { },
   setEditModalOpen = () => { },
   setAddModelOpen = () => { },
+  showScoreTBP,
 }) => {
   relic = {
     enhance: 0,
@@ -98,12 +99,21 @@ const RelicPreview = ({
         <Divider style={{ margin: '6px 0px 6px 0px' }} />
 
         <Flex justify="space-between">
-          <Flex>
-            <img src={(scored) ? Assets.getStarBw() : Assets.getBlank()} style={{ width: iconSize, height: iconSize, marginRight: 2, marginLeft: -3 }}></img>
-            <RelicStatText>
-              {(scored) ? 'Score' : ''}
-            </RelicStatText>
-          </Flex>
+          {showScoreTBP ? (
+            <Flex>
+              <img src={(scored) ? Assets.getStarBw() : Assets.getBlank()} style={{ width: iconSize, height: iconSize, marginRight: 2, marginLeft: -3 }}></img>
+              <RelicStatText>
+                {(scored) ? 'Score' : ''}
+              </RelicStatText>
+            </Flex>
+          ) : (
+            <Flex>
+              <img src={(scored) ? Assets.getStarBw() : Assets.getBlank()} style={{ width: iconSize, height: iconSize, marginRight: 2, marginLeft: -3 }}></img>
+              <RelicStatText>
+                {(scored) ? 'TBP' : ''}
+              </RelicStatText>
+            </Flex>
+          )}
           <RelicStatText>
             {(scored) ? `${score.score} (${score.rating})${score.meta?.modified ? ' *' : ''}` : ''}
           </RelicStatText>
@@ -119,6 +129,7 @@ RelicPreview.propTypes = {
   score: PropTypes.object,
   setEditModalOpen: PropTypes.func,
   setSelectedRelic: PropTypes.func,
+  showScoreTBP: PropTypes.bool.isRequired,
 }
 
 export default RelicPreview
