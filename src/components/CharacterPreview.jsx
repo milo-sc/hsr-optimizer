@@ -832,11 +832,11 @@ export function CharacterPreview(props) {
         <Flex vertical>
           <Flex justify="center">
             <Flex justify="center" style={{ paddingLeft: 20, paddingRight: 5, borderRadius: 7, height: 40, marginTop: 10, backgroundColor: 'rgba(255, 255, 255, 0.05)' }} align="center">
-              <Text style={{ width: 220 }}>
+              <Text style={{ width: 200 }}>
                 Character scoring algorithm:
               </Text>
               <Segmented
-                style={{ width: 480, height: 30 }}
+                style={{ width: 375, height: 30 }}
                 onChange={(selection) => {
                   setScoringType(selection)
                   window.store.getState().setSavedSessionKey(SavedSessionKeys.scoringType, selection)
@@ -852,6 +852,33 @@ export function CharacterPreview(props) {
                   },
                   {
                     label: CHARACTER_SCORE,
+                    value: CHARACTER_SCORE,
+                    disabled: false,
+                  },
+                ]}
+              />
+              <Text style={{ paddingLeft: 25, width: 150 }}>
+                Relic algorithm:
+              </Text>
+              <Segmented
+                style={{ width: 300, height: 30 }}
+                onChange={(selection) => {
+                  setScoringType(selection)
+                  window.store.getState().setSavedSessionKey(SavedSessionKeys.scoringType, selection)
+                  setTimeout(() => SaveState.save(), 1000)
+                }}
+                value={scoringType}
+                block
+                options={[
+                  {
+                    //TEMP LABEL AND VALUE
+                    label: 'Substat Score',
+                    value: SIMULATION_SCORE,
+                    disabled: false,
+                  },
+                  {
+                    //TEMP LABEL AND VALUE
+                    label: 'TBP to Upgrade',
                     value: CHARACTER_SCORE,
                     disabled: false,
                   },
