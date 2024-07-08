@@ -99,21 +99,12 @@ const RelicPreview = ({
         <Divider style={{ margin: '6px 0px 6px 0px' }} />
 
         <Flex justify="space-between">
-          {showScoreTBP ? (
-            <Flex>
-              <img src={(scored) ? Assets.getStarBw() : Assets.getBlank()} style={{ width: iconSize, height: iconSize, marginRight: 2, marginLeft: -3 }}></img>
-              <RelicStatText>
-                {(scored) ? 'Score' : ''}
-              </RelicStatText>
-            </Flex>
-          ) : (
-            <Flex>
-              <img src={(scored) ? Assets.getStarBw() : Assets.getBlank()} style={{ width: iconSize, height: iconSize, marginRight: 2, marginLeft: -3 }}></img>
-              <RelicStatText>
-                {(scored) ? 'TBP' : ''}
-              </RelicStatText>
-            </Flex>
-          )}
+          <Flex>
+            <img src={(scored) ? Assets.getStarBw() : Assets.getBlank()} style={{ width: iconSize, height: iconSize, marginRight: 2, marginLeft: -3 }}></img>
+            <RelicStatText>
+              {showScoreTBP ? 'TBP' : (scored) ? 'Score' : ''}
+            </RelicStatText>
+          </Flex>
           <RelicStatText>
             {(scored) ? `${score.score} (${score.rating})${score.meta?.modified ? ' *' : ''}` : ''}
           </RelicStatText>
