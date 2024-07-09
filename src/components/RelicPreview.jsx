@@ -15,6 +15,7 @@ const RelicPreview = ({
   setSelectedRelic = () => { },
   setEditModalOpen = () => { },
   setAddModelOpen = () => { },
+  showScoreTBP,
 }) => {
   relic = {
     enhance: 0,
@@ -101,7 +102,7 @@ const RelicPreview = ({
           <Flex>
             <img src={(scored) ? Assets.getStarBw() : Assets.getBlank()} style={{ width: iconSize, height: iconSize, marginRight: 2, marginLeft: -3 }}></img>
             <RelicStatText>
-              {(scored) ? 'Score' : ''}
+              {showScoreTBP ? 'TBP' : (scored) ? 'Score' : ''}
             </RelicStatText>
           </Flex>
           <RelicStatText>
@@ -119,6 +120,7 @@ RelicPreview.propTypes = {
   score: PropTypes.object,
   setEditModalOpen: PropTypes.func,
   setSelectedRelic: PropTypes.func,
+  showScoreTBP: PropTypes.bool.isRequired,
 }
 
 export default RelicPreview
