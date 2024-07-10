@@ -106,7 +106,7 @@ const RelicPreview = ({
             </RelicStatText>
           </Flex>
           <RelicStatText>
-            {(scored) ? `${score.score} (${score.rating})${score.meta?.modified ? ' *' : ''}` : ''}
+            {showScoreTBP ? 'placeholder number': (scored) ? `${score.score} (${score.rating})${score.meta?.modified ? ' *' : ''}` : ''}
           </RelicStatText>
         </Flex>
       </Flex>
